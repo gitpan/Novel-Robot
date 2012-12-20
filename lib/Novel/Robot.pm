@@ -1,13 +1,100 @@
 #===============================================================================
-#  DESCRIPTION:  小说下载、更新引擎
+#  DESCRIPTION:  小说下载器
 #       AUTHOR:  AbbyPan (USTC), <abbypan@gmail.com>
 #===============================================================================
+
+=head1 NAME
+
+Novel::Robot
+
+=head1 DESCRIPTION 
+
+小说下载器
+
+=head2 支持站点
+
+=item * 
+
+Jjwxc  : 绿晋江     http://www.jjwxc.net
+
+=item *
+
+Dddbbb : 豆豆小说网 http://www.dddbbb.net
+
+=back
+
+=head1 SYNOPSIS
+
+=item *
+
+下载小说，存成txt/html：
+
+get_book_to_txt.pl http://www.dddbbb.net/html/18451/index.html 
+
+get_book_to_html.pl http://www.dddbbb.net/html/18451/index.html 
+
+=item *
+
+下载小说，导入wordpress空间：
+
+get_book_to_wordpress.pl -b http://www.dddbbb.net/html/18451/index.html -c 言情 -w http://xxx.xxx.com  -u xxx -p xxx
+
+=item *
+
+取出小说 目录页/章节页/作者页/查询关键字 信息，以JSON格式输出：
+
+get_index_to_json.pl http://www.jjwxc.net/onebook.php?novelid=2456
+
+get_chapter_to_json.pl "http://www.jjwxc.net/onebook.php?novelid=2456&chapterid=2" 2
+
+get_writer_to_json.pl http://www.jjwxc.net/oneauthor.php?authorid=3243
+
+get_query_to_json.pl Jjwxc 作者 顾漫
+
+get_query_to_json.pl Dddbbb 作品 拼图 
+
+=item *
+
+批量处理小说(支持to txt/html/wordpress ...)
+
+get_books_to_any.pl -w http://www.jjwxc.net/oneauthor.php?authorid=6 -m 1 -t "perl get_book_to_html.pl {url}"
+
+=head1 FUNCTION
+
+my $xs = Novel::Robot->new();
+
+#目录页
+my $index_url = 'http://www.jjwxc.net/onebook.php?novelid=2456';
+my $index_ref = $xs->get_index_ref($index_url);
+
+#目录页
+$xs->set_site('Jjwxc');
+my $index_ref = $xs->get_index_ref(2456);
+
+#章节页
+my $chapter_url = 'http://www.jjwxc.net/onebook.php?novelid=2456&chapterid=2';
+my $chapter_ref = $xs->get_chapter_ref($chapter_url, 2);
+
+#章节页
+$xs->set_site('Jjwxc');
+my $chapter_ref = $xs->get_chapter_ref(2456,2);
+
+#作者页
+my $writer_url = 'http://www.jjwxc.net/oneauthor.php?authorid=3243';
+my $writer_ref = $xs->get_writer_ref($writer_url);
+
+#查询
+$xs->set_site('Jjwxc');
+my $query_ref = $xs->get_query_ref($query_type, $query_value);
+
+=cut
+
 package Novel::Robot;
 use strict;
 use warnings;
 use utf8;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use Moo;
 
