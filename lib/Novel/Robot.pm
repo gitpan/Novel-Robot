@@ -63,28 +63,48 @@ get_books_to_any.pl -w http://www.jjwxc.net/oneauthor.php?authorid=6 -m 1 -t "pe
 
 my $xs = Novel::Robot->new();
 
+=item *
+
 #目录页
+
 my $index_url = 'http://www.jjwxc.net/onebook.php?novelid=2456';
+
 my $index_ref = $xs->get_index_ref($index_url);
 
 #目录页
+
 $xs->set_site('Jjwxc');
+
 my $index_ref = $xs->get_index_ref(2456);
 
+=item *
+
 #章节页
+
 my $chapter_url = 'http://www.jjwxc.net/onebook.php?novelid=2456&chapterid=2';
+
 my $chapter_ref = $xs->get_chapter_ref($chapter_url, 2);
 
 #章节页
+
 $xs->set_site('Jjwxc');
+
 my $chapter_ref = $xs->get_chapter_ref(2456,2);
 
+=item *
+
 #作者页
+
 my $writer_url = 'http://www.jjwxc.net/oneauthor.php?authorid=3243';
+
 my $writer_ref = $xs->get_writer_ref($writer_url);
 
+=item *
+
 #查询
+
 $xs->set_site('Jjwxc');
+
 my $query_ref = $xs->get_query_ref($query_type, $query_value);
 
 =cut
@@ -94,7 +114,7 @@ use strict;
 use warnings;
 use utf8;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 use Moo;
 
