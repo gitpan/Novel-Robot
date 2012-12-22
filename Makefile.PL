@@ -37,7 +37,7 @@ WriteMakefile(
         'JSON' => 2.53,
         'Term::Menus' => 2.21,
         'WordPress::XMLRPC' => 1.23,
-        'Novel::Robot::Browser' => 0.01, 
+        'Novel::Robot::Browser' => 0.02, 
     },
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES => 'Novel-Robot-*' },
