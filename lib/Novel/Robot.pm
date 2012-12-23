@@ -1,7 +1,8 @@
-#===============================================================================
-#  DESCRIPTION:  小说下载器
-#       AUTHOR:  AbbyPan (USTC), <abbypan@gmail.com>
-#===============================================================================
+# ABSTRACT:  小说下载器
+
+=pod
+
+=encoding utf8
 
 =head1 NAME
 
@@ -20,6 +21,8 @@ Jjwxc  : 绿晋江     http://www.jjwxc.net
 =item *
 
 Dddbbb : 豆豆小说网 http://www.dddbbb.net
+
+=over
 
 =back
 
@@ -59,7 +62,7 @@ get_query_to_json.pl Dddbbb 作品 拼图
 
 get_books_to_any.pl -w http://www.jjwxc.net/oneauthor.php?authorid=6 -m 1 -t "perl get_book_to_html.pl {url}"
 
-=back
+=over
 
 =head1 FUNCTION
 
@@ -118,8 +121,7 @@ use Encode;
 use Moo;
 
 use Novel::Robot::Browser;
-use Novel::Robot::Parser::Jjwxc;
-use Novel::Robot::Parser::Dddbbb;
+use Novel::Robot::Parser;
 
 has browser => (
     is      => 'rw',
@@ -137,25 +139,30 @@ has site => (
 
 has parser => (
     is      => 'rw',
-    lazy    => 1,
-    default => \&set_site,
+    default => sub {
+        my ($self) = @_;
+        my $parser_base = new Novel::Robot::Parser();
+        my $parser = $parser_base->init_parser('Base');
+        return $parser;
+    },
 );
 
 sub set_site {
     my ( $self, $site ) = @_;
     $self->{site} = $site if ($site);
-    $self->{parser_list}{ $self->{site} } //= eval qq[new Novel::Robot::Parser::$self->{site}()];
+    unless($self->{parser_list}{ $self->{site} }){
+        my $parser_base = new Novel::Robot::Parser();
+        $self->{parser_list}{ $self->{site} }
+        = $parser_base->init_parser($self->{site});
+    }
     $self->{parser} = $self->{parser_list}{ $self->{site} };
 } ## end sub set_site
 
 sub set_site_by_url {
     my ( $self, $url ) = @_;
 
-    my $site =
-          ( $url =~ m#^http://www\.jjwxc\.net/# )  ? 'Jjwxc'
-        : ( $url =~ m#^http://www\.dddbbb\.net/# ) ? 'Dddbbb'
-        :                                            '';
-
+    my $site = $self->{parser}->detect_site_by_url($url);
+    
     $self->set_site($site) if ( !$self->{site} or $self->{site} ne $site );
 } ## end sub set_site_by_url
 

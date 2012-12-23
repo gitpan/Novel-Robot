@@ -1,9 +1,15 @@
-Changes
-lib/Novel/Robot.pm
+LICENSE
+MANIFEST
+META.yml
 Makefile.PL
-MANIFEST			This list of files
 README
-t/00-load.t
-t/manifest.t
-t/pod-coverage.t
-t/pod.t
+bin/get_book_to_html.pl
+bin/get_book_to_txt.pl
+bin/get_book_to_wordpress.pl
+bin/get_books_to_any.pl
+bin/get_chapter_to_json.pl
+bin/get_index_to_json.pl
+bin/get_query_to_json.pl
+bin/get_writer_to_json.pl
+dist.ini
+lib/Novel/Robot.pm
