@@ -30,10 +30,10 @@ my %WriteMakefileArgs = (
   "NAME" => "Novel::Robot",
   "PREREQ_PM" => {
     "Moo" => "1.000007",
-    "Novel::Robot::Browser" => "0.01",
-    "Novel::Robot::Parser" => "0.02"
+    "Novel::Robot::Browser" => "0.02",
+    "Novel::Robot::Parser" => "0.03"
   },
-  "VERSION" => "0.06",
+  "VERSION" => "0.07",
   "test" => {
     "TESTS" => ""
   }
