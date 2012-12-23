@@ -13,7 +13,13 @@ meta-spec:
   version: 1.4
 name: Novel-Robot
 requires:
+  Encode::Locale: 1.03
+  HTML::FormatText: 2.10
+  HTML::TreeBuilder: 5.03
+  JSON: 2.53
   Moo: 1.000007
-  Novel::Robot::Browser: 0.02
+  Novel::Robot::Browser: 0.03
   Novel::Robot::Parser: 0.03
-version: 0.07
+  Term::Menus: 2.21
+  WordPress::XMLRPC: 1.23
+version: 0.08

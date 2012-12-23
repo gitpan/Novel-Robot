@@ -22,47 +22,41 @@ Jjwxc  : 绿晋江     http://www.jjwxc.net
 
 Dddbbb : 豆豆小说网 http://www.dddbbb.net
 
-=over
-
 =back
+
+=over
 
 =head1 SYNOPSIS
 
-=item *
+    #下载小说，存成txt/html：
 
-下载小说，存成txt/html：
+    novel_to_txt.pl http://www.dddbbb.net/html/18451/index.html 
 
-get_book_to_txt.pl http://www.dddbbb.net/html/18451/index.html 
+    novel_to_html.pl http://www.dddbbb.net/html/18451/index.html 
+    
 
-get_book_to_html.pl http://www.dddbbb.net/html/18451/index.html 
+    #下载小说，导入wordpress空间：
 
-=item *
+    novel_to_wordpress.pl -b http://www.dddbbb.net/html/18451/index.html -c 言情 -w http://xxx.xxx.com  -u xxx -p xxx
+    
 
-下载小说，导入wordpress空间：
+    #批量处理小说(支持to txt/html/wordpress ...)
 
-get_book_to_wordpress.pl -b http://www.dddbbb.net/html/18451/index.html -c 言情 -w http://xxx.xxx.com  -u xxx -p xxx
+    novel_to_any.pl -w http://www.jjwxc.net/oneauthor.php?authorid=6 -m 1 -t "novel_to_html.pl {url}"
+    
 
-=item *
+    #取出小说 目录页/章节页/作者页/查询关键字 信息，以JSON格式输出：
 
-取出小说 目录页/章节页/作者页/查询关键字 信息，以JSON格式输出：
+    novel_index_to_json.pl http://www.jjwxc.net/onebook.php?novelid=2456
 
-get_index_to_json.pl http://www.jjwxc.net/onebook.php?novelid=2456
+    novel_chapter_to_json.pl "http://www.jjwxc.net/onebook.php?novelid=2456&chapterid=2" 2
 
-get_chapter_to_json.pl "http://www.jjwxc.net/onebook.php?novelid=2456&chapterid=2" 2
+    novel_writer_to_json.pl http://www.jjwxc.net/oneauthor.php?authorid=3243
 
-get_writer_to_json.pl http://www.jjwxc.net/oneauthor.php?authorid=3243
+    novel_query_to_json.pl Jjwxc 作者 顾漫
 
-get_query_to_json.pl Jjwxc 作者 顾漫
+    novel_query_to_json.pl Dddbbb 作品 拼图 
 
-get_query_to_json.pl Dddbbb 作品 拼图 
-
-=item *
-
-批量处理小说(支持to txt/html/wordpress ...)
-
-get_books_to_any.pl -w http://www.jjwxc.net/oneauthor.php?authorid=6 -m 1 -t "perl get_book_to_html.pl {url}"
-
-=over
 
 =head1 FUNCTION
 
@@ -114,8 +108,6 @@ package Novel::Robot;
 use strict;
 use warnings;
 use utf8;
-
-our $VERSION = '0.05';
 
 use Encode;
 use Moo;

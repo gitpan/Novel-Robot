@@ -24,7 +24,7 @@ getopt( 'wskvmt', \%opt );
 #m : select menu
 #t : to txt / to html / to wordpress ...
 
-my $cmd = $opt{w} ? qq[get_writer_to_json.pl $opt{w}] : qq[get_query_to_json.pl $opt{s} $opt{k} $opt{v}];
+my $cmd = $opt{w} ? qq[novel_writer_to_json.pl $opt{w}] : qq[novel_query_to_json.pl $opt{s} $opt{k} $opt{v}];
 print $cmd;
 my $json = `$cmd`;
 my $info = decode_json( $json );
