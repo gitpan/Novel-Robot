@@ -1,8 +1,21 @@
 #!/usr/bin/perl 
-#===============================================================================
-#  DESCRIPTION: 作者专栏页信息，以JSON显示
-#       AUTHOR: Abby Pan (abbypan@gmail.com), USTC 
-#===============================================================================
+=pod
+
+=encoding utf8
+
+=head1  ABSTRACT
+
+鑾峰彇浣滆�呬笓鏍忛〉淇℃伅锛屼互JSON鏍煎紡杈撳嚭
+
+=head1 EXAMPLE
+
+    novel_writer_to_json.pl "http://www.jjwxc.net/oneauthor.php?authorid=3243"
+
+=head1 USAGE
+
+novel_writer_to_json.pl [writer_url]
+
+=cut
 
 use strict;
 use warnings;

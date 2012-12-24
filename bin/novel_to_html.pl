@@ -1,8 +1,23 @@
 #!/usr/bin/perl 
-#===============================================================================
-#  DESCRIPTION: 下载小说，存成html
-#       AUTHOR: Abby Pan (abbypan@gmail.com), USTC 
-#===============================================================================
+=pod
+
+=encoding utf8
+
+=head1  DESC
+
+下载小说，存成html
+
+=head1 EXAMPLE
+
+    novel_to_html.pl "http://www.jjwxc.net/onebook.php?novelid=2456"
+
+    novel_to_html.pl "http://www.dddbbb.net/html/18451/index.html"
+
+=head1 USAGE
+
+novel_to_html.pl [index_url]
+
+=cut
 
 use strict;
 use warnings;
@@ -45,7 +60,7 @@ $css
 </style>
 </head>
 <body>
-<div id="title"> $title </div>
+<div id="title"><a href="$index_url"> $title </a></div>
 <div id="toc"><ol>
 $toc
 </ol></div>
@@ -76,7 +91,7 @@ sub get_css
 {
     my $css = <<__CSS__;
 body {
-	font-size: medium;
+	font-size: large;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	margin: 1em 8em 1em 8em;
 	text-indent: 2em;

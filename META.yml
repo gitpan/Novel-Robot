@@ -22,4 +22,4 @@ requires:
   Novel::Robot::Parser: 0.03
   Term::Menus: 2.21
   WordPress::XMLRPC: 1.23
-version: 0.08
+version: 0.09

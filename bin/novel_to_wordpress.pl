@@ -1,8 +1,40 @@
 #!/usr/bin/perl 
-#===============================================================================
-#  DESCRIPTION: 下载小说，导入wordpress
-#       AUTHOR: Abby Pan (USTC), abbypan@gmail.com
-#===============================================================================
+=pod
+
+=encoding utf8
+
+=head1  DESC
+
+下载小说，导入wordpress空间
+
+=head1 EXAMPLE
+
+    novel_to_wordpress.pl -b "http://www.dddbbb.net/html/18451/index.html" -c 言情 -w http://xxx.xxx.com  -u xxx -p xxx
+    novel_to_wordpress.pl -b "http://www.jjwxc.net/onebook.php?novelid=2456" -c 原创 -w http://xxx.xxx.com  -u xxx -p xxx
+
+=head1 USAGE
+
+novel_to_wordpress.pl -b [index_url] -c [categories] -t [tags] -i [chapter_ids] -w [wordpress_url] -u [username] -p [password] 
+
+=head1 OPTIONS
+
+-b : book url，小说目录页，例如 http://www.jjwxc.net/onebook.php?novelid=2456
+
+-c : categories，小说类别，例如 原创
+
+-t : tags，标签，例如 顾漫
+
+-i : chapter ids，章节序号，例如 1,4-7,10
+
+-w : wordpress 地址
+
+-u : wordpress 用户
+
+-p : wordpress 密码
+
+-h : help 帮助
+
+=cut
 
 use strict;
 use warnings;
@@ -107,10 +139,11 @@ sub post_book_to_wordpress {
 
 sub print_usage {
     print <<"USAGE";
-[usage]
-$0 -b http://www.jjwxc.net/onebook.php?novelid=2456 -c 原创 -w http://www.xxx.com -u xxx -p xxx
+[USAGE]
 
-[option]
+$0 -b "http://www.jjwxc.net/onebook.php?novelid=2456" -c 原创 -w "http://www.xxx.com" -u xxx -p xxx
+
+[OPTION]
 -b : book url，小说目录页，例如 http://www.jjwxc.net/onebook.php?novelid=2456
 -c : categories，小说类别，例如 原创
 -t : tags，标签，例如 顾漫

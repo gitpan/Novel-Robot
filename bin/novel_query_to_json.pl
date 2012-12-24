@@ -1,21 +1,39 @@
 #!/usr/bin/perl 
-#===============================================================================
-#  DESCRIPTION: ��ѯ���ص���Ϣ����JSON��ʾ
-#       AUTHOR: Abby Pan (abbypan@gmail.com), USTC 
-#===============================================================================
+=pod
+
+=encoding utf8
+
+=head1 DESCRIPTION
+
+查询小说，返回的信息以JSON格式输出
+
+=head1 EXAMPLE
+
+    novel_query_to_json.pl Jjwxc 作者 顾漫
+
+    novel_query_to_json.pl Dddbbb 作品 拼图 
+
+
+=head1 USAGE
+
+novel_query_to_json.pl [site] [query_type] [keyword]
+
+site: 例如 Jjwxc / Dddbbb
+
+query_type: 例如 作品 / 作者
+
+keyword : 查询的关键字
+
+=cut
 
 use strict;
 use warnings;
 use utf8;
 use JSON;
-
-
-
-use Novel::Robot;
-
 use Encode::Locale;
 use Encode;
 
+use Novel::Robot;
 
 my ($site,$keyword,$value) = @ARGV;
 $keyword = decode( locale => $keyword);

@@ -1,8 +1,21 @@
 #!/usr/bin/perl 
-#===============================================================================
-#  DESCRIPTION: 小说目录页信息，以JSON显示
-#       AUTHOR: Abby Pan (abbypan@gmail.com), USTC 
-#===============================================================================
+=pod
+
+=encoding utf8
+
+=head1  ABSTRACT
+
+鑾峰彇灏忚绔犺妭椤典俊鎭紝浠SON鏍煎紡杈撳嚭
+
+=head1 EXAMPLE
+
+    novel_chapter_to_json.pl "http://www.jjwxc.net/onebook.php?novelid=2456&chapterid=2" 2
+
+=head1 USAGE
+
+novel_chapter_to_json.pl [chapter_url] [chapter_id]
+
+=cut
 
 use strict;
 use warnings;

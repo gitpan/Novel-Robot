@@ -28,35 +28,26 @@ Dddbbb : 豆豆小说网 http://www.dddbbb.net
 
 =head1 SYNOPSIS
 
-    #下载小说，存成txt/html：
+    #下载小说，存成txt/html
 
-    novel_to_txt.pl http://www.dddbbb.net/html/18451/index.html 
+    novel_to_txt.pl "http://www.dddbbb.net/html/18451/index.html"
 
-    novel_to_html.pl http://www.dddbbb.net/html/18451/index.html 
+
+    #下载小说，存成html
+
+    novel_to_html.pl "http://www.jjwxc.net/onebook.php?novelid=2456"
+
+
+    #下载小说，导入wordpress空间
+
+    novel_to_wordpress.pl -b "http://www.jjwxc.net/onebook.php?novelid=2456" -c 原创 -w http://xxx.xxx.com  -u xxx -p xxx
     
-
-    #下载小说，导入wordpress空间：
-
-    novel_to_wordpress.pl -b http://www.dddbbb.net/html/18451/index.html -c 言情 -w http://xxx.xxx.com  -u xxx -p xxx
-    
-
     #批量处理小说(支持to txt/html/wordpress ...)
 
-    novel_to_any.pl -w http://www.jjwxc.net/oneauthor.php?authorid=6 -m 1 -t "novel_to_html.pl {url}"
+    novel_to_any.pl -w "http://www.jjwxc.net/oneauthor.php?authorid=3243" -m 1 -t "novel_to_html.pl {url}"
+
+    novel_to_any.pl -s Jjwxc -o "作品 何以笙箫默" -m 1 -t "novel_to_html.pl {url}"
     
-
-    #取出小说 目录页/章节页/作者页/查询关键字 信息，以JSON格式输出：
-
-    novel_index_to_json.pl http://www.jjwxc.net/onebook.php?novelid=2456
-
-    novel_chapter_to_json.pl "http://www.jjwxc.net/onebook.php?novelid=2456&chapterid=2" 2
-
-    novel_writer_to_json.pl http://www.jjwxc.net/oneauthor.php?authorid=3243
-
-    novel_query_to_json.pl Jjwxc 作者 顾漫
-
-    novel_query_to_json.pl Dddbbb 作品 拼图 
-
 
 =head1 FUNCTION
 

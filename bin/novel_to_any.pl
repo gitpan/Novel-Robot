@@ -1,8 +1,37 @@
 #!/usr/bin/perl 
-#===============================================================================
-#  DESCRIPTION:  TERM下面选择下载小说
-#       AUTHOR:  AbbyPan (USTC), <abbypan@gmail.com>
-#===============================================================================
+=pod
+
+=encoding utf8
+
+=head1 DESC
+
+TERM下面选择下载小说
+
+=head1 EXAMPLE
+
+    novel_to_any.pl -w "http://www.jjwxc.net/oneauthor.php?authorid=3243" -m 1 -t "novel_to_html.pl {url}"
+
+    novel_to_any.pl -s Jjwxc -o "作品 何以笙箫默" -m 1 -t "novel_to_html.pl {url}"
+    
+=head1 USAGE
+
+novel_to_any.pl -w [writer_url] -o [writer_url option] -m [select_menu_or_not] -t [novel_save_cmd]
+
+novel_to_any.pl -s [site] -o [query_detail] -m [select_menu_or_not] -t [novel_save_cmd]
+
+=head1 OPTIONS
+
+-w : 作者专栏URL
+
+-s : 指定查询的站点
+
+-o : 获取作者专栏的补充参数(可选) 或者 查询的具体信息(必选)
+
+-m : 是否输出小说选择菜单
+
+-t : 小说保存指令，URL信息以 {url} 指定
+
+=cut
 use strict;
 use warnings;
 use utf8;
@@ -16,15 +45,14 @@ use Getopt::Std;
 $| = 1;
 
 my %opt;
-getopt( 'wskvmt', \%opt );
+getopt( 'wsomt', \%opt );
 #w : writer
 #s(query) : site
-#k(query) : keyword
-#v(query) : value
+#o : writer option / query info
 #m : select menu
 #t : to txt / to html / to wordpress ...
 
-my $cmd = $opt{w} ? qq[novel_writer_to_json.pl $opt{w}] : qq[novel_query_to_json.pl $opt{s} $opt{k} $opt{v}];
+my $cmd = $opt{w} ? qq[novel_writer_to_json.pl $opt{w} $opt{o}] : qq[novel_query_to_json.pl $opt{s} $opt{o}];
 print $cmd;
 my $json = `$cmd`;
 my $info = decode_json( $json );

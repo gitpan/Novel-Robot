@@ -39,7 +39,7 @@ my %WriteMakefileArgs = (
     "Term::Menus" => "2.21",
     "WordPress::XMLRPC" => "1.23"
   },
-  "VERSION" => "0.08",
+  "VERSION" => "0.09",
   "test" => {
     "TESTS" => ""
   }
