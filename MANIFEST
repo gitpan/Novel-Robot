@@ -3,6 +3,7 @@ MANIFEST
 META.yml
 Makefile.PL
 README
+README.md
 bin/novel_chapter_to_json.pl
 bin/novel_index_to_json.pl
 bin/novel_query_to_json.pl

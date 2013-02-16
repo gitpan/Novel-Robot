@@ -23,11 +23,7 @@ use strict;
 use warnings;
 use utf8;
 
-use HTML::TreeBuilder;
-use HTML::FormatText;
-
-
-
+use Novel::Robot::Packer;
 use Novel::Robot;
 
 use Encode::Locale;
@@ -39,6 +35,9 @@ $|=1;
 my ($index_url) = @ARGV;
 
 my $xs = Novel::Robot->new();
+my $packer = Novel::Robot::Packer->new();
+$packer->set_packer('HTML');
+
 print "\rget book to html : $index_url";
 my $index_ref = $xs->get_index_ref($index_url);
 exit unless($index_ref);
@@ -47,7 +46,7 @@ my $filename = encode( locale  => "$index_ref->{writer}-$index_ref->{book}.html"
 open my $fh, '>:utf8', $filename;
 
 my $css = get_css();
-my $toc = generate_toc($index_ref);
+my $index_html = $packer->format_index($index_ref);
 my $title = "$index_ref->{writer} 《$index_ref->{book}》";
 print $fh <<__HTML__;
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
@@ -60,10 +59,7 @@ $css
 </style>
 </head>
 <body>
-<div id="title"><a href="$index_url"> $title </a></div>
-<div id="toc"><ol>
-$toc
-</ol></div>
+$index_html
 <div id="content">
 __HTML__
 
@@ -74,13 +70,7 @@ for my $i (1 .. $index_ref->{chapter_num}){
     print "\rget book to html : chapter $i/$index_ref->{chapter_num} : $u";
     my $chap_ref = $xs->get_chapter_ref($u, $i);
 
-    my $j = sprintf ( "%03d# ", $i );
-    my $floor = <<__FLOOR__;
-<div class="floor">
-<div class="fltitle">$j<a name="toc$i">$chap_ref->{chapter}</a></div>
-<div class="flcontent">$chap_ref->{content}</div>
-</div>
-__FLOOR__
+    my $floor = $packer->format_chapter($chap_ref);
     print $fh $floor,"\n";
 }
 print $fh "</div></body></html>";

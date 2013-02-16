@@ -105,6 +105,7 @@ use Moo;
 
 use Novel::Robot::Browser;
 use Novel::Robot::Parser;
+#use Novel::Robot::Packer;
 
 has browser => (
     is      => 'rw',
@@ -129,6 +130,27 @@ has parser => (
         return $parser;
     },
 );
+
+#has packer => (
+    #is      => 'rw',
+    #default => sub {
+        #my ($self) = @_;
+        #my $packer_base = new Novel::Robot::Packer();
+        #my $packer = $packer_base->init_packer('Base');
+        #return $packer;
+    #},
+#);
+
+#sub set_packer {
+    #my ( $self, $packer_name, $opt ) = @_;
+    #$self->{packer_name} = $packer_name if ($packer_name);
+    #unless($self->{packer_list}{ $self->{packer_name} }){
+        #my $packer_base = new Novel::Robot::Packer();
+        #$self->{packer_list}{ $self->{packer_name} }
+        #= $packer_base->init_packer($self->{packer_name}, $opt);
+    #}
+    #$self->{packer} = $self->{packer_list}{ $self->{packer_name} };
+#} ## end sub set_packer
 
 sub set_site {
     my ( $self, $site ) = @_;
