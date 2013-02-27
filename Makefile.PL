@@ -32,13 +32,13 @@ my %WriteMakefileArgs = (
     "Encode::Locale" => "1.03",
     "JSON" => "2.53",
     "Moo" => "1.000007",
-    "Novel::Robot::Browser" => "0.03",
+    "Novel::Robot::Browser" => "0.04",
     "Novel::Robot::Packer" => "0.01",
-    "Novel::Robot::Parser" => "0.03",
+    "Novel::Robot::Parser" => "0.04",
     "Term::Menus" => "2.21",
     "WordPress::XMLRPC" => "1.23"
   },
-  "VERSION" => "0.10",
+  "VERSION" => "0.11",
   "test" => {
     "TESTS" => ""
   }
