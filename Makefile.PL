@@ -33,7 +33,7 @@ my %WriteMakefileArgs = (
     "Novel::Robot::Parser" => "0.05",
     "Term::Menus" => "2.21"
   },
-  "VERSION" => "0.12",
+  "VERSION" => "0.13",
   "test" => {
     "TESTS" => ""
   }
