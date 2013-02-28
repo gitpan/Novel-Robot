@@ -4,13 +4,9 @@ META.yml
 Makefile.PL
 README
 README.md
-bin/novel_chapter_to_json.pl
-bin/novel_index_to_json.pl
-bin/novel_query_to_json.pl
 bin/novel_to_any.pl
 bin/novel_to_html.pl
 bin/novel_to_txt.pl
 bin/novel_to_wordpress.pl
-bin/novel_writer_to_json.pl
 dist.ini
 lib/Novel/Robot.pm

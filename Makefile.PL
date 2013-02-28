@@ -17,14 +17,10 @@ my %WriteMakefileArgs = (
   },
   "DISTNAME" => "Novel-Robot",
   "EXE_FILES" => [
-    "bin/novel_chapter_to_json.pl",
-    "bin/novel_index_to_json.pl",
-    "bin/novel_query_to_json.pl",
     "bin/novel_to_any.pl",
     "bin/novel_to_html.pl",
     "bin/novel_to_txt.pl",
-    "bin/novel_to_wordpress.pl",
-    "bin/novel_writer_to_json.pl"
+    "bin/novel_to_wordpress.pl"
   ],
   "LICENSE" => "perl",
   "NAME" => "Novel::Robot",
@@ -32,13 +28,12 @@ my %WriteMakefileArgs = (
     "Encode::Locale" => "1.03",
     "JSON" => "2.53",
     "Moo" => "1.000007",
-    "Novel::Robot::Browser" => "0.04",
-    "Novel::Robot::Packer" => "0.01",
-    "Novel::Robot::Parser" => "0.04",
-    "Term::Menus" => "2.21",
-    "WordPress::XMLRPC" => "1.23"
+    "Novel::Robot::Browser" => "0.06",
+    "Novel::Robot::Packer" => "0.02",
+    "Novel::Robot::Parser" => "0.05",
+    "Term::Menus" => "2.21"
   },
-  "VERSION" => "0.11",
+  "VERSION" => "0.12",
   "test" => {
     "TESTS" => ""
   }
