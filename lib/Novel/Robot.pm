@@ -113,7 +113,7 @@ use Novel::Robot::Browser;
 use Novel::Robot::Parser;
 use Novel::Robot::Packer;
 
-our $VERSION = 0.16
+our $VERSION = 0.17;
 
 has browser => (
     is      => 'rw',
