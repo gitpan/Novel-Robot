@@ -4,6 +4,7 @@ META.yml
 Makefile.PL
 README
 README.md
+bin/dzs_to_html.pl
 bin/novel_to_any.pl
 bin/novel_to_html.pl
 bin/novel_to_txt.pl
