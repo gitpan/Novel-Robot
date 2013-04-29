@@ -18,6 +18,7 @@ my %WriteMakefileArgs = (
   "DISTNAME" => "Novel-Robot",
   "EXE_FILES" => [
     "bin/dzs_to_html.pl",
+    "bin/dzs_to_wordpress.pl",
     "bin/novel_to_any.pl",
     "bin/novel_to_html.pl",
     "bin/novel_to_txt.pl",
@@ -31,10 +32,10 @@ my %WriteMakefileArgs = (
     "Moo" => "1.000007",
     "Novel::Robot::Browser" => "0.07",
     "Novel::Robot::Packer" => "0.03",
-    "Novel::Robot::Parser" => "0.06",
+    "Novel::Robot::Parser" => "0.07",
     "Term::Menus" => "2.21"
   },
-  "VERSION" => "0.18",
+  "VERSION" => "0.19",
   "test" => {
     "TESTS" => ""
   }
