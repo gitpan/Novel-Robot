@@ -32,10 +32,10 @@ my %WriteMakefileArgs = (
     "Moo" => "1.000007",
     "Novel::Robot::Browser" => "0.07",
     "Novel::Robot::Packer" => "0.03",
-    "Novel::Robot::Parser" => "0.07",
+    "Novel::Robot::Parser" => "0.08",
     "Term::Menus" => "2.21"
   },
-  "VERSION" => "0.19",
+  "VERSION" => "0.20",
   "test" => {
     "TESTS" => ""
   }

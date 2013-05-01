@@ -4,25 +4,19 @@
 
 =encoding utf8
 
-=head1 NAME
-
-Novel::Robot
-
 =head1 DESCRIPTION 
 
 小说下载器
 
-=head2 支持站点
+=head2 支持的小说输入形式
 
-=item * 
+见 Novel::Robot::Parser
 
-Jjwxc  : 绿晋江     http://www.jjwxc.net
+=over
 
-=item *
+=head2 支持的小说输出形式
 
-Dddbbb : 豆豆小说网 http://www.dddbbb.net
-
-=back
+见 Novel::Robot::Packer
 
 =over
 
@@ -122,7 +116,7 @@ use Novel::Robot::Browser;
 use Novel::Robot::Parser;
 use Novel::Robot::Packer;
 
-our $VERSION = 0.19;
+our $VERSION = 0.20;
 
 has browser => (
     is      => 'rw',
