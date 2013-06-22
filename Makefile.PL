@@ -17,30 +17,44 @@ my %WriteMakefileArgs = (
   },
   "DISTNAME" => "Novel-Robot",
   "EXE_FILES" => [
-    "bin/dzs_to_html.pl",
+    "bin/novel_to_wordpress.pl",
     "bin/dzs_to_wordpress.pl",
-    "bin/novel_to_any.pl",
-    "bin/novel_to_html.pl",
     "bin/novel_to_txt.pl",
-    "bin/novel_to_wordpress.pl"
+    "bin/novel_to_html.pl",
+    "bin/novel_to_any.pl",
+    "bin/dzs_to_html.pl"
   ],
   "LICENSE" => "perl",
   "NAME" => "Novel::Robot",
   "PREREQ_PM" => {
-    "Encode::Locale" => "1.03",
-    "JSON" => "2.53",
-    "Moo" => "1.000007",
-    "Novel::Robot::Browser" => "0.07",
-    "Novel::Robot::Packer" => "0.03",
-    "Novel::Robot::Parser" => "0.08",
-    "Term::Menus" => "2.21"
+    "Encode::Locale" => 0,
+    "JSON" => 0,
+    "Moo" => 0,
+    "Novel::Robot::Browser" => 0,
+    "Novel::Robot::Packer" => 0,
+    "Novel::Robot::Parser" => 0,
+    "Term::Menus" => 0
   },
-  "VERSION" => "0.20",
+  "TEST_REQUIRES" => {},
+  "VERSION" => "0.21",
   "test" => {
-    "TESTS" => ""
+    "TESTS" => "t/*.t"
   }
 );
 
+
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.63_03) } ) {
+  my $tr = delete $WriteMakefileArgs{TEST_REQUIRES};
+  my $br = $WriteMakefileArgs{BUILD_REQUIRES};
+  for my $mod ( keys %$tr ) {
+    if ( exists $br->{$mod} ) {
+      $br->{$mod} = $tr->{$mod} if $tr->{$mod} > $br->{$mod};
+    }
+    else {
+      $br->{$mod} = $tr->{$mod};
+    }
+  }
+}
 
 unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
   my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};

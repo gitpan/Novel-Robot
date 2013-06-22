@@ -69,4 +69,4 @@ $xs->set_packer( 'WordPress', \%packer_opt );
 my $writer = $opt{W};
 my $book = $opt{b};
 my @path = split ',', $opt{o};
-$xs->deal_book({ writer => $writer, book => $book, path => \@path  });
+$xs->get_book({ writer => $writer, book => $book, path => \@path  });

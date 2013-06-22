@@ -6,18 +6,18 @@ build_requires: {}
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300030, CPAN::Meta::Converter version 2.120921'
+generated_by: 'Dist::Zilla version 4.300035, CPAN::Meta::Converter version 2.120921'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: Novel-Robot
 requires:
-  Encode::Locale: 1.03
-  JSON: 2.53
-  Moo: 1.000007
-  Novel::Robot::Browser: 0.07
-  Novel::Robot::Packer: 0.03
-  Novel::Robot::Parser: 0.08
-  Term::Menus: 2.21
-version: 0.20
+  Encode::Locale: 0
+  JSON: 0
+  Moo: 0
+  Novel::Robot::Browser: 0
+  Novel::Robot::Packer: 0
+  Novel::Robot::Parser: 0
+  Term::Menus: 0
+version: 0.21

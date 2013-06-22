@@ -64,4 +64,4 @@ $xs->{parser}{chapter_regex} = decode( locale => $chap_regex ) if($chap_regex);
 
 my @path = split ',', $obj;
 
-$xs->deal_book({ writer => $writer, book => $book, path => \@path  });
+$xs->get_book({ writer => $writer, book => $book, path => \@path  });
