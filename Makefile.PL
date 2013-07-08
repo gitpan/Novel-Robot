@@ -37,7 +37,7 @@ my %WriteMakefileArgs = (
     "Term::Menus" => 0
   },
   "TEST_REQUIRES" => {},
-  "VERSION" => "0.22",
+  "VERSION" => "0.23",
   "test" => {
     "TESTS" => ""
   }
