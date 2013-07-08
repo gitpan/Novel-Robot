@@ -33,12 +33,13 @@ my %WriteMakefileArgs = (
     "Novel::Robot::Browser" => 0,
     "Novel::Robot::Packer" => 0,
     "Novel::Robot::Parser" => 0,
+    "Parallel::ForkManager" => 0,
     "Term::Menus" => 0
   },
   "TEST_REQUIRES" => {},
-  "VERSION" => "0.21",
+  "VERSION" => "0.22",
   "test" => {
-    "TESTS" => "t/*.t"
+    "TESTS" => ""
   }
 );
 

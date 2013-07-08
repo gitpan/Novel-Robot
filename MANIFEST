@@ -12,7 +12,7 @@ bin/novel_to_txt.pl
 bin/novel_to_wordpress.pl
 dist.ini
 lib/Novel/Robot.pm
-t/01.parser_jjwxc.t
-t/02.parse_dddbbb.t
-t/03.parse_nunu.t
-t/04.parse_shunong.t
+xt/01.parser_jjwxc.t
+xt/02.parse_dddbbb.t
+xt/03.parse_nunu.t
+xt/04.parse_shunong.t

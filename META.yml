@@ -19,5 +19,6 @@ requires:
   Novel::Robot::Browser: 0
   Novel::Robot::Packer: 0
   Novel::Robot::Parser: 0
+  Parallel::ForkManager: 0
   Term::Menus: 0
-version: 0.21
+version: 0.22
