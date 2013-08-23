@@ -13,7 +13,7 @@ use Parallel::ForkManager;
 use Novel::Robot::Parser;
 use Novel::Robot::Packer;
 
-our $VERSION = 0.23;
+our $VERSION = 0.25;
 
 has parser          => ( is => 'rw', );
 has packer          => ( is => 'rw', );
