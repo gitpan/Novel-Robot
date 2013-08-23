@@ -30,14 +30,13 @@ my %WriteMakefileArgs = (
     "Encode::Locale" => 0,
     "JSON" => 0,
     "Moo" => 0,
-    "Novel::Robot::Browser" => 0,
     "Novel::Robot::Packer" => 0,
     "Novel::Robot::Parser" => 0,
     "Parallel::ForkManager" => 0,
     "Term::Menus" => 0
   },
   "TEST_REQUIRES" => {},
-  "VERSION" => "0.23",
+  "VERSION" => "0.24",
   "test" => {
     "TESTS" => ""
   }
