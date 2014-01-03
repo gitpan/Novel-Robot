@@ -13,7 +13,7 @@ use Parallel::ForkManager;
 use Novel::Robot::Parser;
 use Novel::Robot::Packer;
 
-our $VERSION = 0.25;
+our $VERSION = 0.27;
 
 has parser          => ( is => 'rw', );
 has packer          => ( is => 'rw', );
@@ -44,7 +44,7 @@ sub get_book {
     return unless ($index_ref);
 
     my $pk = $self->{packer};
-    my ( $w_sub, $w_dst ) = $pk->open_packer( $index_ref, $o );
+    my ( $w_sub, $end_sub ) = $pk->open_packer( $index_ref, $o );
 
     $pk->write_packer( $w_sub, $pk->format_before_index($index_ref) );
     $pk->write_packer( $w_sub, $pk->format_index($index_ref) );
@@ -54,26 +54,22 @@ sub get_book {
 
     my ( $add_chap_sub, $work_chap_sub, $del_chap_sub ) =
       $self->get_chapter_iter($chap_ids);
-    my $process_chap_sub = sub {
-        my ($chap) = @_;
-        return unless ($chap);
-
-        $add_chap_sub->($chap);
-
-        while ( my $chap_r = $work_chap_sub->() ) {
-
-            $pk->write_packer( $w_sub, $pk->format_chapter($chap_r) )
-              unless ( $parser->is_empty_chapter($chap_r) );
-
-            $del_chap_sub->();
-        }
-    };
 
     my $pm = Parallel::ForkManager->new( $self->{max_process_num} );
     $pm->run_on_finish(
         sub {
             my ( $pid, $exit_code, $ident, $exit, $core, $chap ) = @_;
-            $process_chap_sub->($chap);
+            return unless($chap);
+
+            $add_chap_sub->($chap);
+
+            while ( my $chap_r = $work_chap_sub->() ) {
+
+                $pk->write_packer( $w_sub, $pk->format_chapter($chap_r) )
+                unless ( $parser->is_empty_chapter($chap_r) );
+
+                $del_chap_sub->();
+            }
         }
     );
 
@@ -81,14 +77,13 @@ sub get_book {
         my $chap_r = $parser->get_nth_chapter_info( $index_ref, $i );
         my $is_empty_chapter = $parser->is_empty_chapter($chap_r);
 
-        if ($is_empty_chapter) {
-            my $pid = $pm->start and next;
-            my $r = $parser->get_chapter_ref( $chap_r->{url}, $chap_r->{id} );
-            $pm->finish( 0, $r );
-        }
-        else {
-            $process_chap_sub->($chap_r);
-        }
+        my $pid = $pm->start and next;
+
+        my $r = $is_empty_chapter ? 
+            $parser->get_chapter_ref( $chap_r->{url}, $chap_r->{id} )
+            : $chap_r ;
+
+        $pm->finish( 0, $r );
 
     } ## end for my $i ( 1 .. $index_ref...)
 
@@ -96,7 +91,9 @@ sub get_book {
 
     $pk->write_packer( $w_sub, $pk->format_after_chapter($index_ref) );
 
-    return $w_dst;
+    return $end_sub->() if($end_sub and ref($end_sub) eq 'CODE');
+
+    return $end_sub;
 } ## end sub get_book
 
 sub get_chapter_iter {
