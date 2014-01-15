@@ -11,7 +11,7 @@ use Novel::Robot;
 $| = 1;
 
 my %opt;
-getopt( 'wsqvmt', \%opt );
+getopt( 'wsqkmt', \%opt );
 
 my $xs = Novel::Robot->new();
 $xs->set_packer($opt{t} || 'TXT');
@@ -24,9 +24,9 @@ if($opt{w}){
     $books_ref = $writer_ref->{booklist};
 }elsif($opt{q}){
     #query
-    my $keyword = decode( locale => $opt{q});
-    my $value = decode( locale => $opt{v});
-    $books_ref = $xs->{parser}->get_query_ref($keyword, $value);
+    my $type = decode( locale => $opt{q});
+    my $keyword = decode( locale => $opt{k});
+    $books_ref = $xs->{parser}->get_query_ref($type, $keyword);
 }
 
 my $select = $opt{m} ? $xs->select_book($books_ref) : $books_ref;
