@@ -15,6 +15,7 @@ L<Novel::Robot> 小说下载器
     Nunu    : http://book.kanunu.org
     Shunong : http://book.shunong.com
     Asxs    : http://www.23hh.com
+    Luoqiu  : http://www.luoqiu.com
 
 =head2 支持小说输出形式
 

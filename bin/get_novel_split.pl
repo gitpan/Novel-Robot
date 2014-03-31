@@ -41,7 +41,7 @@ for(my $m = 1; $m<=$num; $m+=$opt{n}){
         max_chapter => $n, 
         with_toc => $opt{C}, 
         show_progress_bar => $opt{S}, 
-        output => $out, 
+        output => encode(locale=>$out), 
     );
 
 }

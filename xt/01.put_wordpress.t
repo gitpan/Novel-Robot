@@ -11,9 +11,9 @@ my $index_url = 'http://www.jjwxc.net/onebook.php?novelid=2456';
 
 my $r = $xs->get_book($index_url, 
         #with_toc => 1, 
-        usr => 'lsyx',
-        passwd => 'jjds86',
-        wp_url => 'http://novel.idouzi.tk',
+        usr => 'someusr',
+        passwd => 'somepwd',
+        wp_url => 'http://www.somewp.com',
         tag => [ '定柔三迷', '古风' ], 
         category => [ '原创' ], 
 );
