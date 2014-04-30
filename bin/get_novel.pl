@@ -24,7 +24,6 @@ $opt{S} //=1;
 my ($m, $n);
 if($opt{i}){
     ($m, $n) = split '-', $opt{i};
-    $n ||= $m;
 }
 
 if($opt{f}){
