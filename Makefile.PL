@@ -10,7 +10,7 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "download novel \345\260\217\350\257\264\344\270\213\350\275\275\345\231\250",
+  "ABSTRACT" => "download novel /bbs thread",
   "AUTHOR" => "abbypan <abbypan\@gmail.com>",
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
@@ -33,7 +33,7 @@ my %WriteMakefileArgs = (
     "Parallel::ForkManager" => 0,
     "Term::Menus" => 0
   },
-  "VERSION" => "0.32",
+  "VERSION" => "0.33",
   "test" => {
     "TESTS" => ""
   }
